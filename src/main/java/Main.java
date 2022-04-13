@@ -6,22 +6,22 @@ public class Main {
     public static void main(String[] args) {
         StringBuilder log = new StringBuilder();
 
-        createDir("src", "./Games", log);
-        createDir("res", "./Games", log);
-        createDir("savegames", "./Games", log);
-        createDir("temp", "./Games", log);
+        createDir( "./Games/src", log);
+        createDir( "./Games/res", log);
+        createDir( "./Games/savegames", log);
+        createDir( "./Games/temp", log);
 
-        createDir("main", "./Games/src", log);
-        createDir("test", "./Games/src", log);
+        createDir("./Games/src/main", log);
+        createDir("./Games/src/main", log);
 
-        createFile("Main.java", "./Games/src/main", log);
-        createFile("Utils.java", "./Games/src/main", log);
+        createFile("./Games/src/main/Main.java", log);
+        createFile("./Games/src/main/Utils.java", log);
 
-        createDir("drawables", "./Games/res", log);
-        createDir("victors", "./Games/res", log);
-        createDir("icons", "./Games/res", log);
+        createDir("./Games/res/drawables", log);
+        createDir( "./Games/res/victors", log);
+        createDir( "./Games/res/icons", log);
 
-        createFile("temp.txt", "./Games/temp", log);
+        createFile("./Games/temp/temp.txt", log);
 
         try (FileWriter fw = new FileWriter("./Games/temp/temp.txt")) {
             fw.write("");
@@ -32,26 +32,26 @@ public class Main {
     }
 
 
-    public static void createDir(String nameDir, String parentPath, StringBuilder log) {
-        File dir = new File(parentPath + "/" + nameDir);
+    public static void createDir(String path, StringBuilder log) {
+        File dir = new File(path);
 
         if (dir.mkdir()) {
-            log.append("Directory " + nameDir + " was created");
+            log.append("Directory " + dir.getName() + " was created");
         } else {
-            log.append("Directory " + nameDir + " was not created");
+            log.append("Directory " + dir.getName() + " was not created");
         }
         log.append("\n");
 
     }
 
-    public static void createFile(String nameFile, String path, StringBuilder log) {
-        File file = new File(path + "/" + nameFile);
+    public static void createFile(String nameFile, StringBuilder log) {
+        File file = new File(nameFile);
 
         try {
             if (file.createNewFile()) {
-                log.append("File " + path + " was created");
+                log.append("File " + file.getName() + " was created");
             } else {
-                log.append("File " + path + " was not created");
+                log.append("File " + file.getName() + " was not created");
             }
             log.append("\n");
         } catch (IOException e) {
