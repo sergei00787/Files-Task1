@@ -8,7 +8,7 @@ public class Main {
 
         createDir("src", "./Games", log);
         createDir("res", "./Games", log);
-        createDir("save", "./Games", log);
+        createDir("savegames", "./Games", log);
         createDir("temp", "./Games", log);
 
         createDir("main", "./Games/src", log);
